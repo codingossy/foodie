@@ -14,11 +14,11 @@ const Drinks = ({ drink }) => {
     strCategory,
   } = drink;
 
-  // const id = drink.idDrink
+  const id = drink.idDrink
 
  
   return (
-    <div className="w-full border border-gray-200 p-4" key={idDrink}>
+    <div className="w-full border border-gray-200 p-4">
       <Image
         width={500}
         height={500}
@@ -37,7 +37,7 @@ const Drinks = ({ drink }) => {
         </h4>
       </div>
 
-      <Link href='/drinksmenu/[id]' as={`/drinksmenu/${idDrink}`}  className="flex items-center justify-center">
+      <Link href='/drinksmenu/[id]' as={`/drinksmenu/${id}`}  className="flex items-center justify-center">
         <button className="rounded-md bg-gray-600 px-5 py-2 text-white hover:bg-gray-900">
           details
         </button>

@@ -11,7 +11,7 @@ const index = ( { allDrinks}) => {
       <section>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full place-items-center my-10 gap-y-10 gap-x-10'>
           {allDrinks.map((drink) => (
-            <Drinks drink={drink} key={drink.idDrink} />
+            <Drinks drink={drink}/>
           ))}
         </div>
       </section>
