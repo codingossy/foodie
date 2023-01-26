@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  h1{
+    @apply text-2xl
+  }
+  h2{
+    @apply text-xl
+  }
+  h3, h4{
+    @apply text-xl
+  }
+}
+
+
+@layer components {
+  section{
+    @apply container mx-auto my-20
+  }
+  .section{
+    @apply my-10
+  }
+  .toggle {
+    @apply fixed top-0 bottom-0 z-30 w-[50%] transition-all ease-in duration-500
+  }
+
+  .footerListItem {
+    @apply hover:text-red-500 cursor-pointer p-2
+  }
+  .btn{
+    @apply p-2 bg-blue-500 rounded-md text-white w-56 capitalize
+
+  }
+  .btn2{
+    @apply p-2 bg-blue-500 rounded-md text-white w-full md:w-24 text-center hover:bg-blue-900 cursor-pointer capitalize
+
+  }
+}
+
+@layer utilities {
+  .filter-none{
+    filter: none;
+  }
+}
+
+
+/* keys */
+* {
+    scroll-behavior: smooth;
+  }
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Raleway', sans-serif;
+  }
+  
+body{
+    font-family:  'Poppins', sans-serif;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* background: #000;
+    color: #fff; */
+  }
+body::-webkit-scrollbar{
+    display: none;
+  }
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: pink;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--themeRed);
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all 300ms ease;
+
+}
+
+.move{
+  animation: moveUpDown 1s linear infinite;
+}
+
+@keyframes moveUpDown {
+   from {
+    transform: translateY(0);
+   }
+   to{
+    transform: translateY(85px);
+   }
+}
