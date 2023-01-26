@@ -1,6 +1,7 @@
 import React from 'react'
+import Drinks from '../../components/drinks/Drinks'
 import Layout from '../../layout/Layout'
-import Drinks from './Drinks'
+
 
 const index = ( { allDrinks}) => {
   // console.log(allDrinks)

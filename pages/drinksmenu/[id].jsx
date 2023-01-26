@@ -13,11 +13,11 @@ const DrinksDetails = ({ drinksDesc }) => {
   // console.log(drinksDesc);
 
    // add item to cart
-const addFoodToCart = useStore((state) => state.addFoodToCart)
-const addToCart = () => {
-  addFoodToCart({...drinksDesc, price: drinksDesc.price})
-  toast.success('item added to cart')
-}
+// const addFoodToCart = useStore((state) => state.addFoodToCart)
+// const addToCart = () => {
+//   addFoodToCart({...drinksDesc, price: drinksDesc.price})
+//   toast.success('item added to cart')
+// }
 
 
   return (
@@ -37,9 +37,7 @@ const addToCart = () => {
               className="w-full h-full md:h-96 object-cover"
             />
 
-            {/* <div className="my-10 flex items-center justify-center">
-              <button onClick={addToCart} className="w-52 capitalize bg-blue-500 text-white p-2 rounded-md hover:bg-blue-800">add to cart</button>
-            </div> */}
+          
           </div>
 
           <div className="flex flex-col gap-y-4 w-full">
@@ -101,7 +99,7 @@ export const getStaticPaths = async () => {
   );
 
   const data = await res.json();
-  const paths = data?.drinks?.map((drink) => {
+  const paths = data.drinks.map((drink) => {
     return {
       params: {
         id: drink.idDrink.toString(),

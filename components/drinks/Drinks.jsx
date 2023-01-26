@@ -6,7 +6,7 @@ const Drinks = ({ drink }) => {
 
 
   const {
-    idDrink,
+    // idDrink,
     strDrink,
     strDrinkThumb,
     strAlcoholic,
