@@ -52,7 +52,7 @@ const addFoodToCart = useStore((state) => state.addFoodToCart)
               alt="image details"
               width={500}
               height={500}
-              className="w-full h-full md:h-96 object-cover"
+              className="w-full h-96 object-cover"
             />
           </div>
 
