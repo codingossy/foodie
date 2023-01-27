@@ -5,19 +5,19 @@ const Navbar = () => {
     <div className="capitalize hidden md:flex">
       <ul className="flex items-center space-x-12 text-black">
         <li>
-          <Link className="cursor-pointer" href="/">
+          <Link className="cursor-pointer hover:text-purple-600" href="/">
             food
           </Link>
         </li>
         <li>
-          <Link href="/dishes">local dishes</Link>
+          <Link className="cursor-pointer hover:text-purple-600" href="/dishes">local dishes</Link>
         </li>
         <li>
-          <Link href="/menu">drinks</Link>
+          <Link className="cursor-pointer hover:text-purple-600" href="/menu">drinks</Link>
         </li>
 
         <li>
-          <Link href="/contact">contact us</Link>
+          <Link className="cursor-pointer hover:text-purple-600" href="/contact">contact us</Link>
         </li>
       </ul>
     </div>

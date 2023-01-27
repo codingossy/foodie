@@ -11,11 +11,12 @@ import { useSession } from "next-auth/react";
 import PaymentModal from "../../components/paymentModal/PaymentModal";
 import { useRouter } from "next/router";
 // import  useRouter  from "next/router";
+// image
+import empty from "../../public/service2.png";
 
 const Cart = () => {
-
   const [paymentMethod, setPaymentMethod] = useState(null);
-// AUTH
+  // AUTH
   const { data: session } = useSession();
   // console.log(session);
   // zustand
@@ -31,7 +32,7 @@ const Cart = () => {
   // pass the total items to the modal
   const totalItems = () =>
     cartData.foods.reduce((a, b) => a + b.quantity * b.price, 0);
-  // clear cart zustand  
+  // clear cart zustand
   const clearCart = useStore((state) => state.clearCart);
   // clear cart
   const clearCartItems = (index) => {
@@ -41,7 +42,7 @@ const Cart = () => {
 
   // router
 
-  const router = useRouter()
+  const router = useRouter();
 
   // modal pay on delivery
   // total items from the cart state
@@ -49,30 +50,46 @@ const Cart = () => {
   const handlePayOnDelivery = () => {
     setPaymentMethod(0);
     typeof window !== "undefined" &&
-      localStorage.setItem('totalItems', totalItems());
+      localStorage.setItem("totalItems", totalItems());
   };
-
 
   // payment with stripe
   const handlePayCreditCard = async () => {
-    typeof window !== "undefined" && localStorage.setItem('totalItems', totalItems())
-    setPaymentMethod(1)
-    const response = await fetch('/api/stripe', {
+    typeof window !== "undefined" &&
+      localStorage.setItem("totalItems", totalItems());
+    setPaymentMethod(1);
+    const response = await fetch("/api/stripe", {
       method: "POST",
       headers: {
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
       body: JSON.stringify(cartData.foods),
-    })
+    });
 
-    if(response.status === 500) return
+    if (response.status === 500) return;
 
-    const data = await response.json()
-    toast.loading("processing payment")
-    router.push(data.url)
+    const data = await response.json();
+    toast.loading("processing payment");
+    router.push(data.url);
+  };
+
+  if (cartData.foods.length === 0) {
+    return (
+      <Layout>
+        <div className="container mx-auto my-20">
+          <div className="flex flex-col items-center min-h-[40vh] justify-center p-2 gap-y-4">
+            <Image alt="cart empty" src={empty} className="w-44 h-44 object-cover mb-5" />
+            <span className="capitalize text-xl md:text-2xl">
+              your cart is empty eje mi..
+            </span>
+            <Link href={`/`} className="uppercase hover:text-red-500 text-sm underline">
+              Go back home and buy something
+            </Link>
+          </div>
+        </div>
+      </Layout>
+    );
   }
-
-
 
   return (
     <Layout>
@@ -169,7 +186,10 @@ const Cart = () => {
                   pay on Delivery
                 </button>
 
-                <button onClick={handlePayCreditCard} className="w-28 p-2 bg-red-500 hover:bg-red-700 capitalize text-white rounded-md text-xs">
+                <button
+                  onClick={handlePayCreditCard}
+                  className="w-28 p-2 bg-red-500 hover:bg-red-700 capitalize text-white rounded-md text-xs"
+                >
                   credit card
                 </button>
               </div>
@@ -182,7 +202,7 @@ const Cart = () => {
                   </button>
                 </Link>
                 <Link href={`/account`}>
-                  <button  className="w-28 p-2 bg-red-500 hover:bg-red-700 capitalize text-white rounded-md text-xs">
+                  <button className="w-28 p-2 bg-red-500 hover:bg-red-700 capitalize text-white rounded-md text-xs">
                     credit card
                   </button>
                 </Link>

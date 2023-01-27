@@ -55,7 +55,7 @@ const Footer = () => {
           <li className="footerListItem">Terms & conditions</li>
         </ul>
       </div>
-      <div className="capitalize container mx-auto my-5">Copyright © 2022 ossy</div>
+      <div className="capitalize container mx-auto my-5">Copyright © 2023 ossy</div>
     </footer>
   );
 };

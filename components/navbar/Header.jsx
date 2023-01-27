@@ -69,7 +69,7 @@ const Header = () => {
           
 
             {session ? (
-              <div>
+              <div className="ml-5">
                 <Link
                   href={`/account`}
                   className="flex items-center gap-x-2 justify-center"
@@ -85,9 +85,9 @@ const Header = () => {
                 </Link>
               </div>
             ) : (
-              <div className="flex items-center">
+              <div className="flex items-center ml-5">
                 <Link href={`/account`}>
-                  <button className="font-semibold bg-red-500 hover:bg-red-300 w-20 p-1 capitalize rounded-md text-white">sign up</button>
+                  <button className="font-semibold bg-purple-600 hover:bg-purple-300 w-20 p-1 capitalize rounded-md text-white">sign up</button>
                 </Link>
               </div>
             )}
@@ -96,7 +96,7 @@ const Header = () => {
           {/* mobile nav functionality */}
           <HiMenu
             onClick={() => setNavMobile(true)}
-            className="md:hidden text-black text-3xl cursor-pointer"
+            className="md:hidden text-purple-800 text-3xl cursor-pointer"
           />
 
           <div className={`${navMobile ? "right-0" : "-right-full"} toggle `}>
