@@ -78,11 +78,18 @@ const Cart = () => {
       <Layout>
         <div className="container mx-auto my-20">
           <div className="flex flex-col items-center min-h-[40vh] justify-center p-2 gap-y-4">
-            <Image alt="cart empty" src={empty} className="w-44 h-44 object-cover mb-5" />
+            <Image
+              alt="cart empty"
+              src={empty}
+              className="w-44 h-44 object-cover mb-5"
+            />
             <span className="capitalize text-xl md:text-2xl">
               your cart is empty eje mi..
             </span>
-            <Link href={`/`} className="uppercase hover:text-red-500 text-sm underline">
+            <Link
+              href={`/`}
+              className="uppercase hover:text-red-500 text-sm underline"
+            >
               Go back home and buy something
             </Link>
           </div>
@@ -94,130 +101,128 @@ const Cart = () => {
   return (
     <Layout>
       <section>
-        <div className="flex flex-col md:flex-row gap-y-10 gap-x-10 w-full ">
-          <div className="flex-1 p-2 md:w-72 bg-red-500">
-            <table className="w-full capitalize text-white">
-              <thead>
-                <tr className="text-xs md:text-sm">
-                  <th>item</th>
-                  <th>name</th>
-                  <th>size</th>
-                  <th>price</th>
-                  <th>qty</th>
-                  <th>total</th>
-                </tr>
-              </thead>
-              <tbody className="">
-                {cartData.foods.length > 0 &&
-                  cartData.foods.map((food, index) => {
-                    const src = urlFor(food.image).url();
+        <div className="rounded-2xl p-3 bg-slate-100 w-full h-full">
+          <div className="flex justify-between capitalize">
+            <h4 className="font-semibold capitalize text-sm md:text-2xl">shopping cart</h4>
+            <button
+              onClick={() => clearCartItems()}
+              className="text-red-500 capitalize text-sm md:text-md hover:text-red-800 cursor-pointer font-semibold underline"
+            >
+              remove all
+            </button>
+          </div>
+          <div className="border-b my-10 w-full">
+            {cartData.foods.length > 0 &&
+              cartData.foods.map((food, index) => {
+                const src = urlFor(food.image).url();
 
-                    return (
-                      <tr
-                        key={index}
-                        className="w-full border hover:bg-red-500  text-center xs:text-[10px] text-[13px] md:text-sm p-2"
+                return (
+                  <div
+                    className="flex border rounded-md p-2 gap-x-4 my-10 justify-between items-center"
+                    key={index}
+                  >
+                    <Image
+                      src={src}
+                      width={500}
+                      height={500}
+                      className="w-14 md:w-20 rounded-md p-1 h-16 object-cover"
+                      loader={() => src}
+                      alt="food item"
+                    />
+
+                    <div>
+                      <h2 className="capitalize text-sm md:text-lg font-semibold">{food.name}</h2>
+                      <p className="text-xs">
+                        {food.size === 0
+                          ? "small"
+                          : food.size === 1
+                          ? "medium"
+                          : "large"}
+                      </p>
+                      <p className="text-xs text-green-500">available</p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <p className="text-xs md:text-sm">Quantity: </p>
+                      <p>{food.quantity}</p>
+                    </div>
+                    <div className="flex flex-col items-center gap-y-1">
+                      <p className="font-semibold text-lg md:text-2xl text-green-500 ">
+                        ${food.price}
+                      </p>
+                      <button className="text-blue-500 font-semibold underline capitalize text-xs cursor-pointer">
+                        save for later
+                      </button>
+                      <button
+                        onClick={() => handleRemoveFromCart(index)}
+                        className="text-red-500 font-semibold underline cursor-pointer text-xs md:text-sm"
                       >
-                        <td>
-                          <Image
-                            src={src}
-                            width={500}
-                            height={500}
-                            className="w-16 p-1 h-16 object-cover"
-                            loader={() => src}
-                            alt="food item"
-                          />
-                        </td>
-                        <td>{food.name}</td>
-                        <td>
-                          {food.size === 0
-                            ? "small"
-                            : food.size === 1
-                            ? "medium"
-                            : "large"}
-                        </td>
-                        <td className="text-green-500 font-semibold">
-                          ${food.price}
-                        </td>
-                        <td>{food.quantity}</td>
-                        <td>${food.price * food.quantity}</td>
-                        <td onClick={() => handleRemoveFromCart(index)}>
-                          <FaTrash className="text-blue-500 hover:text-red-900 cursor-pointer" />
-                        </td>
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
+                        remove
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
 
-          <div className="flex-initial p-3 md:w-72 shadow-2xl bg-blue-500">
-            <h3 className="text-center font-semibold capitalize text-white">
-              Spending details
-            </h3>
-
-            <div className="capitalize my-5 flex flex-col gap-y-3 text-white p-3">
-              <span className="flex justify-between">
-                <p>items</p>
-                <p className="font-semibold">{cartData.foods.length}</p>
-              </span>
-
-              <span className="flex justify-between">
-                <p>total</p>
-                <p className="font-semibold">${totalItems()}</p>
-              </span>
-              <span className="flex justify-between">
-                <p>discount</p>
-                <p className="font-semibold">$0</p>
-              </span>
-              <span className="flex justify-between">
-                <p>delivery fee</p>
-                <p className="font-semibold">$0</p>
-              </span>
-            </div>
-
-            {session ? (
-              // if logged in
-
-              <div className="flex flex-col md:flex-row items-center gap-x-5 gap-y-5 justify-center my-10">
-                <button
-                  onClick={handlePayOnDelivery}
-                  className="w-28 p-2 bg-gray-500 hover:bg-gray-700 capitalize text-white rounded-md text-xs"
-                >
-                  pay on Delivery
-                </button>
-
-                <button
-                  onClick={handlePayCreditCard}
-                  className="w-28 p-2 bg-red-500 hover:bg-red-700 capitalize text-white rounded-md text-xs"
-                >
-                  credit card
-                </button>
+          {/* second */}
+          <div className="w-full border p-3">
+            <div className="flex items-start justify-start flex-col w-full">
+              <div className="flex flex-col">
+                <h1 className="text-xl capitalize  font-semibold">
+                  spending details
+                </h1>
+                <p>{cartData.foods.length} item(s)</p>
               </div>
-            ) : (
-              // if not logged in
-              <div className="flex flex-col md:flex-row items-center gap-x-5 gap-y-5 my-10 justify-center">
-                <Link href={`/account`}>
-                  <button className="w-28 p-2 bg-gray-500 hover:bg-gray-700 capitalize text-white rounded-md text-xs">
+
+              <div className="capitalize">
+                <span className="flex gap-x-4">
+                  <p>discount:</p>
+                  <p className="font-semibold">$0</p>
+                </span>
+                <span className="flex gap-x-4">
+                  <p>delivery fee: </p>
+                  <p className="font-semibold">$0</p>
+                </span>
+                <h3 className="capitalize pt-5 font-semibold text-green-500">
+                  total spent: ${totalItems()}
+                </h3>
+              </div>
+
+              {session ? (
+                // if logged in
+
+                <div className="flex flex-col md:flex-row items-center gap-x-5 gap-y-5 my-10">
+                  <button
+                    onClick={handlePayOnDelivery}
+                    className="w-28 p-2 bg-gray-500 hover:bg-gray-700 capitalize text-white rounded-md text-xs"
+                  >
                     pay on Delivery
                   </button>
-                </Link>
-                <Link href={`/account`}>
-                  <button className="w-28 p-2 bg-red-500 hover:bg-red-700 capitalize text-white rounded-md text-xs">
+
+                  <button
+                    onClick={handlePayCreditCard}
+                    className="w-28 p-2 bg-red-500 hover:bg-red-700 capitalize text-white rounded-md text-xs"
+                  >
                     credit card
                   </button>
-                </Link>
-              </div>
-            )}
+                </div>
+              ) : (
+                // if not logged in
+                <div className="flex flex-col md:flex-row items-center gap-x-5 gap-y-5 my-10">
+                  <Link href={`/account`}>
+                    <button className="w-28 p-2 bg-gray-500 hover:bg-gray-700 capitalize text-white rounded-md text-xs">
+                      pay on Delivery
+                    </button>
+                  </Link>
+                  <Link href={`/account`}>
+                    <button className="w-28 p-2 bg-red-500 hover:bg-red-700 capitalize text-white rounded-md text-xs">
+                      credit card
+                    </button>
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-
-        <div className="my-10 flex items-center justify-center md:items-start md:justify-start">
-          <button
-            onClick={() => clearCartItems()}
-            className="btn hover:bg-blue-900"
-          >
-            clear cart
-          </button>
         </div>
       </section>
 

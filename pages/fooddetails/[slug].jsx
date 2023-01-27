@@ -72,13 +72,13 @@ const addFoodToCart = useStore((state) => state.addFoodToCart)
                   <h4 className="font-semibold">choices:</h4>
                   <div className="flex flex-col md:flex-row gap-y-5 items-center gap-x-5 my-4 w-full">
                     <span onClick={() => setSize(0)} className="btn2">
-                      large
+                      small
                     </span>
                     <span onClick={() => setSize(1)} className="btn2">
                       medium
                     </span>
                     <span onClick={() => setSize(2)} className="btn2">
-                      small
+                      large
                     </span>
                   </div>
                 </div>
