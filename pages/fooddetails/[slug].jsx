@@ -3,14 +3,13 @@ import React, { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import Layout from "../../layout/Layout";
 import { client, urlFor } from "../../linklib/client";
-import { useStore } from "../../zustand/store";
+import { useCartStore, useStore } from "../../zustand/store";
 // TOAST
-import toast, {Toaster } from 'react-hot-toast'
-
-
-
+import toast, { Toaster } from "react-hot-toast";
+import { calculateNairaEquivalent } from "../../components/formatprice";
 
 const SingleFoodDetails = ({ singleFood }) => {
+  const nairaEquivalent = calculateNairaEquivalent(singleFood.price[0]);
 
   const [Size, setSize] = useState(1);
 
@@ -29,14 +28,16 @@ const SingleFoodDetails = ({ singleFood }) => {
   };
 
   // add item to cart
-const addFoodToCart = useStore((state) => state.addFoodToCart)
-  const addToCart = () => {
-    addFoodToCart({...singleFood, price: singleFood.price[Size], quantity: Quantity, size: Size })
-    toast.success('item added to cart')
-  }
-
-
-
+  const addToCart = useCartStore((state) => state.addToCart);
+  const addItemToCart = () => {
+    addToCart({
+      ...singleFood,
+      price: singleFood.price[Size],
+      quantity: Quantity,
+      size: Size,
+    });
+    toast.success("item added to cart");
+  };
 
   return (
     <Layout>
@@ -63,7 +64,7 @@ const addFoodToCart = useStore((state) => state.addFoodToCart)
               {singleFood.name}
             </h1>
             <p className="text-green-500 text-2xl font-semibold">
-              ${singleFood.price[Size]}
+              ${singleFood.price[Size]}  ({nairaEquivalent})
             </p>
 
             <div className="flex flex-col gap-y-5">
@@ -94,14 +95,14 @@ const addFoodToCart = useStore((state) => state.addFoodToCart)
                       <FaMinus />
                     </span>
 
-                    <span
-                      
-                      className="w-10 h-10 rounded-full text-white bg-red-500 flex items-center justify-center"
-                    >
+                    <span className="w-10 h-10 rounded-full text-white bg-red-500 flex items-center justify-center">
                       {Quantity}
                     </span>
 
-                    <span onClick={() => handleQty("increase")} className="cursor-pointer border p-3 hover:bg-red-500 hover:text-white">
+                    <span
+                      onClick={() => handleQty("increase")}
+                      className="cursor-pointer border p-3 hover:bg-red-500 hover:text-white"
+                    >
                       <FaPlus />
                     </span>
                   </div>
@@ -109,13 +110,18 @@ const addFoodToCart = useStore((state) => state.addFoodToCart)
               </div>
 
               <div className="my-3">
-                <p className="capitalize items-center flex gap-x-2">
+                <p className="capitalize items-start flex flex-col gap-x-2">
                   <h4 className="font-semibold capitalize">description: </h4>
                   <span className=""> {singleFood.details}</span>
                 </p>
 
                 <div className="my-5">
-                  <button onClick={addToCart} className="w-44 bg-red-500 p-2 rounded-md text-white hover:bg-red-800 capitalize ">add to cart</button>
+                  <button
+                    onClick={addItemToCart}
+                    className="w-44 bg-red-500 p-2 rounded-md text-white hover:bg-red-800 capitalize "
+                  >
+                    add to cart
+                  </button>
                 </div>
               </div>
             </div>

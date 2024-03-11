@@ -1,10 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { FaUtensilSpoon } from "react-icons/fa";
-// iamges
-import heroimg from "../../public/heroimg2.png";
-import icon1 from "../../public/fried-potatoes.png";
-import icon2 from "../../public/hamburger.png";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -12,51 +8,38 @@ const Hero = () => {
       <div className="flex flex-col gap-x-8 gap-y-10 md:flex-row w-full">
         {/* left side */}
         <div className="w-full my-5 md:my-16 text-center md:text-start">
-          <h5 className=" text-red-500 font-semibold capitalize">
-            enjoy fast delivery
-          </h5>
-          <h1 className="capitalize text-2xl md:text-4xl font-semibold max-w-[500px] my-5 ">
+          <h2 className=" text-red-500  font-semibold capitalize">
+            Elevate Your Space
+          </h2>
+          <h1 className="capitalize text-2xl lg::text-4xl font-semibold lg:max-w-[500px] my-5 ">
             {" "}
-            enjoy the Fastest food delivery here on the mainland..
+            Experience Swift Furniture Delivery to Transform Your Home.
           </h1>
-          <p className="text-gray-500 text-center md:text-start max-w-[400px]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
-            itaque laborum. At, quam quod nobis asperiores optio numquam sunt
-            magnam.
+          <p className="text-gray-500 text-center md:text-start w-full lg:max-w-[400px]">
+            Transform your living room into a haven of relaxation or create a
+            stylish dining area for memorable gatherings with family and
+            friends. With our fast delivery service, you can enjoy your new
+            furniture sooner than you think.
           </p>
 
-          <div className="my-5">
-            <button className="btn">order now</button>
-          </div>
+          <Link href="/showcase">
+            <div className=" my-8">
+              <button className="btn hover:bg-blue-400">order now</button>
+            </div>
+          </Link>
         </div>
 
         {/* right side */}
         <div className="w-full relative ">
           <Image
-            src={heroimg}
+            src={
+              "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800"
+            }
             width={500}
             height={500}
             alt="hero image"
-            className="h-full sm:h-96 w-full md:w-96 object-cover"
+            className="h-full sm:h-96 w-full object-cover"
           />
-
-          <div className="">
-            <Image
-              src={icon1}
-              alt="icons"
-              width={500}
-              className="w-10 h-10 object-cover transition-all ease-in duration-300 left-14 md:left-10 top-20 absolute move"
-              height={500}
-            />
-
-            <Image
-              src={icon2}
-              alt="icons"
-              width={500}
-              className="w-10 h-10 object-cover top-20 right-14 transition-all ease-in duration-300 md:right-52 absolute move"
-              height={500}
-            />
-          </div>
         </div>
       </div>
     </section>

@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { RxDotFilled } from "react-icons/rx";
 import Image from "next/image";
-import { allchefdata } from "../../db/ChefsData";
+import { allfurnituredata } from "../../db/ChefsData";
 // image
 import imghero from '../../public/date2.jpeg'
 
 const Chefs = () => {
   const [current, setCurrent] = useState(0);
-  const length = allchefdata.length;
+  const length = allfurnituredata.length;
   const timeout = useRef(null);
 
   // to set the loading auto
@@ -32,7 +32,7 @@ const Chefs = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
-  if (!Array.isArray(allchefdata) || allchefdata.length <= 0) {
+  if (!Array.isArray(allfurnituredata) || allfurnituredata.length <= 0) {
     return null;
   }
 
@@ -43,11 +43,11 @@ const Chefs = () => {
 
   return (
     <section>
-      <h1 className="uppercase font-semibold">our chefs</h1>
+      <h1 className="uppercase font-semibold">meet our craftsmen</h1>
       <div className="flex flex-col md:flex-row gap-y-10 gap-x-10 justify-between">
         <div className="relative w-full">
           <div>
-            {allchefdata.map((slide, index) => {
+            {allfurnituredata.map((slide, index) => {
               return (
                 <div
                   key={index}
@@ -86,7 +86,7 @@ const Chefs = () => {
           </div>
 
           <div className="flex items-start justify-start gap-x-2 py-1 mb-10 top-4">
-            {allchefdata.map((slides, slidesId) => (
+            {allfurnituredata.map((slides, slidesId) => (
               <div key={slidesId}>
                 <RxDotFilled
                   onClick={() => dotsSlider(slidesId)}
@@ -100,7 +100,7 @@ const Chefs = () => {
         <div className="w-full">
           <Image
             className="w-full h-full"
-            src={imghero}
+            src={"https://media.istockphoto.com/id/1365410828/photo/male-and-female-carpenter-at-work-man-and-woman-are-crafting-with-wood-in-a-workshop.jpg?b=1&s=612x612&w=0&k=20&c=YJz0vGEmCMfc8Q3JceqXJQ5REUIVq0JYeyHN4xCv-v8="}
             alt="image"
             width={1000}
             height={1000}

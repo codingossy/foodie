@@ -15,12 +15,12 @@ const Services = () => {
                 src={item.image}
                 width={400}
                 height={400}
-                className="md:h-44 object-cover transition-all ease-in-out duration-300 hover:scale-95 w-full cursor-pointer"
+                className="md:h-72 object-contain transition-all ease-in-out duration-300 hover:scale-95 w-full cursor-pointer"
               />
 
               <div className="my-4 text-center">
-                <h4 className="capitalize font-semibold">{item.title}</h4>
-                <p className="text-sm">{item.desc}</p>
+                <h4 className="capitalize font-semibold mb-5">{item.title}</h4>
+                <p className="text-sm line-clamp-3">{item.desc}</p>
               </div>
             </div>
           </>

@@ -1,31 +1,21 @@
-import chef1 from "../public/chef1.jpeg";
-import chef2 from "../public/chef2.jpeg";
-import chef3 from "../public/chef4.jpeg";
-import chef4 from "../public/chef3.jpeg";
+export const allfurnituredata = [
+  {
+    text: "John Smith is a highly skilled craftsman with years of experience in woodworking. His attention to detail and passion for creating beautiful furniture pieces make him an invaluable asset to our team.",
+    name: "John Smith",
+    status: "Master Craftsman",
+    image: "https://media.istockphoto.com/id/1300037832/photo/carpenter-blowing-sawdust-from-wooden-plank.jpg?b=1&s=612x612&w=0&k=20&c=YuU6bzrLbPVmXywHNNImQxyMdS2srO7iMAqOjQdnL94="
+  },
+  {
+    text: "Emily Johnson specializes in crafting unique and functional furniture pieces. With her creative vision and expertise, she brings elegance and style to every project she works on.",
+    name: "Emily Johnson",
+    status: "Artisan Furniture Maker",
+    image: "https://media.istockphoto.com/id/1218972142/photo/male-student-studying-for-carpentry-apprenticeship-at-college-using-wood-plane.jpg?b=1&s=612x612&w=0&k=20&c=4b6DNGj1Oa3D3hZ9iI1HP33-uR06jsg39Modw-DUX5g="
+  },
+  {
+    text: "Michael Davis is a dedicated furniture craftsman known for his precision and craftsmanship. His ability to transform raw materials into exquisite furniture sets him apart in the industry.",
+    name: "Michael Davis",
+    status: "Fine Woodworker",
+    image: "https://media.istockphoto.com/id/1147804793/photo/carpenter-working-with-equipment-on-wooden-table-in-carpentry-shop-woman-works-in-a-carpentry.jpg?b=1&s=612x612&w=0&k=20&c=W5XW5-c9bTSF1fsz2nLvrM1E1N6eIrNFiVRnaQZWZOI="
+  },
 
-export const allchefdata = [
-  {
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum nisl et nunc facilisis, a commodo eros mollis. Nunc vel pellentesque est. Curabitur at odio sit amet libero vulputate efficitur ac nec justo. Nulla vitae mauris quam. Nulla quam massa, faucibus id pretium ac, mattis eu velit. Donec sed risus a lacus fringilla finibus.",
-    name: "tom adkins",
-    image: chef1,
-    status: "senior chef",
-  },
-  {
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum nisl et nunc facilisis, a commodo eros mollis. Nunc vel pellentesque est. Curabitur at odio sit amet libero vulputate efficitur ac nec justo. Nulla vitae mauris quam. Nulla quam massa, faucibus id pretium ac, mattis eu velit. Donec sed risus a lacus fringilla finibus.",
-    name: "billie eillish",
-    image: chef2,
-    status: "fry cook",
-  },
-  {
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum nisl et nunc facilisis, a commodo eros mollis. Nunc vel pellentesque est. Curabitur at odio sit amet libero vulputate efficitur ac nec justo. Nulla vitae mauris quam. Nulla quam massa, faucibus id pretium ac, mattis eu velit. Donec sed risus a lacus fringilla finibus.",
-    name: "sandra oh",
-    image: chef3,
-    status: "chef",
-  },
-  {
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum nisl et nunc facilisis, a commodo eros mollis. Nunc vel pellentesque est. Curabitur at odio sit amet libero vulputate efficitur ac nec justo. Nulla vitae mauris quam. Nulla quam massa, faucibus id pretium ac, mattis eu velit. Donec sed risus a lacus fringilla finibus.",
-    name: "rita ora",
-    image: chef4,
-    status: "senior chef",
-  },
 ];

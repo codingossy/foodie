@@ -48,45 +48,73 @@
 
 
 /* keys */
+/*important keys */
 * {
-    scroll-behavior: smooth;
-  }
+  scroll-behavior: smooth;
+}
 
+
+body,
 html {
-    scroll-behavior: smooth;
-    font-family: 'Raleway', sans-serif;
-  }
-  
-body{
-    font-family:  'Poppins', sans-serif;
-    overflow-x: hidden;
-    -ms-overflow-style: none;
+  font-family: "Anta", sans-serif;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+
+}
+
+h1 {
+  font-family: "Vigosamine", serif;
+}
+
+/* Hide scrollbar on Webkit-based browsers (Chrome, Safari) */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
+.bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.bar::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+/* For Firefox */
+
+/* Hide scrollbar on Firefox */
+@-moz-document url-prefix() {
+  * {
     scrollbar-width: none;
-    /* background: #000;
-    color: #fff; */
   }
-body::-webkit-scrollbar{
-    display: none;
-  }
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
-/* Track */
-::-webkit-scrollbar-track {
-  background: pink;
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--themeRed);
-  border-radius: 1rem;
+body {
+  margin: 0;
+  /* remove default margin */
+  scrollbar-width: none;
+  /* Also needed to disable scrollbar Firefox */
+  -ms-overflow-style: none;
+  /* Disable scrollbar IE 10+ */
+  overflow-y: scroll;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  /* Disable scrollbar Chrome/Safari/Webkit */
 }
+
 
 
 a {
